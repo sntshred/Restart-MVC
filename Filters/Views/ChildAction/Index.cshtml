@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.Action("countries", new { countries = new List<string>() { "US", "UK", "India" } })
+
+@*Render Action *@
+
+@{
+    Html.Action("countries", new { countries = new List<string>() { "US", "UK", "India" } });
+
+    }

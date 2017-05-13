@@ -1,0 +1,11 @@
+﻿@model EmployeeDbAccess.COMPANY
+
+@{
+    ViewBag.Title = "Index1";
+}
+
+<h2>Index1</h2>
+
+@Html.TextAreaFor(m => m.CompanyName);
+@Html.DropDownListFor(m => m.Departments, new SelectList(Model.Departments, "Id", "Name"), "SElect name");
+

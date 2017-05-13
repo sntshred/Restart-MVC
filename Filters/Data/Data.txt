@@ -1,0 +1,6 @@
+﻿
+CustomError -> Index -> On Excecuting 	 1/31/2017 9:53:39 PM
+CustomError -> Index ->  OnActionExecuted 	 1/31/2017 9:53:39 PM
+CustomError -> Index ->  OnResultExecuting 	 1/31/2017 9:53:39 PM
+CustomError -> Index ->  OnResultExecuted 	 1/31/2017 9:53:39 PM-----------------------------------------------------
+CustomError -> Welcome -> On Excecuting 	 1/31/2017 9:55:17 PM

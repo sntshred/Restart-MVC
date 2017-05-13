@@ -1,0 +1,23 @@
+﻿@model EmployeeDbAccess.COMPANY
+
+@{
+    ViewBag.Title = "Selectcity";
+}
+
+<h2>Selectcity</h2>
+
+@using (Html.BeginForm())
+{
+    foreach (var dep in Model.Departments)
+    {
+        
+        @Html.RadioButtonFor(m => m.selectEmployeeCity, dep.Id)@dep.City;
+    <br/>
+    
+    }
+    
+    <br />
+    <input type="submit"  value="submit" />
+    
+    
+}

@@ -1,0 +1,40 @@
+﻿
+@*@for (int i = 0; i <= 10; i++)
+{
+    <b>@i</b>
+    <br />
+    
+}*@
+
+@*@{
+    int sum = 0;
+    int odd = 0;
+    for (int i = 0; i < 10; i++)
+    {
+        if (i %2==0)
+        {
+            sum = sum + i; <text>Even</text>
+        }
+        else
+        {
+            odd = odd + i; @:Odd
+        }
+        <br />
+    }
+    
+       
+}
+
+<h3>sum of even numbers = @sum</h3>
+<h3>sum of odd numbers = @odd</h3>*@
+
+ @for (int i = 1; i < 4; i++)
+ {
+    <img src="~/Images/@(i).jpg" width="200px" height="200px" />
+ }
+<br />
+
+this is my Email address <br />
+santosh@gmail.com
+<br />
+I will meet you @@office

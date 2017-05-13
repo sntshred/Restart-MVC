@@ -1,0 +1,74 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<layout.Models.tblEmployee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<p>
+@using(Html.BeginForm("Index","Search",FormMethod.Get)){
+    <b>Search By</b> @Html.RadioButton("searchby","Name") <text>Name</text>
+         @Html.RadioButton("searchby","Gender") <text>Gender</text>
+    <br />
+    @Html.TextBox("search") <input type="submit" value="Search" />
+}
+</p>
+<table class="table" style="border:1px">
+    <tr>
+        <th>
+          @Html.ActionLink("Name", "Index", new { sortby = ViewBag.SortByNameParameter, searchby = Request.QueryString["searchby"], search = Request.QueryString["search"] })
+        </th>
+        <th>
+            @Html.ActionLink("Gender", "Index", new { sortby = ViewBag.SortByGenderParameter, searchby = Request.QueryString["searchby"], search = Request.QueryString["search"] })
+
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DeptName)
+        </th>
+        <th></th>
+    </tr>
+    
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="4"> No rows matches search criteria</td>
+        </tr>
+        
+    }
+    else { 
+foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeptName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+    }
+
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchby = Request.QueryString["searchby"], search = Request.QueryString["search"], sortby = Request.QueryString["sortby"] }),
+                                                          new  PagedListRenderOptions(){
+                                                          Display=PagedListDisplayMode.IfNeeded,DisplayPageCountAndCurrentLocation=true,DisplayItemSliceAndTotal=true })
+
+

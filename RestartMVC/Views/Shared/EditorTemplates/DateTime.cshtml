@@ -1,0 +1,8 @@
+﻿@model DateTime?
+@*@Html.TextBox("", (Model.HasValue ? Model.Value.ToString("dd/MM/yyyy") : string.Empty), new { @class = "date" })*@
+
+@Html.TextBox("", (Model.HasValue ? @ViewData.TemplateInfo.FormattedModelValue : string.Empty), new { @class = "date" })
+<br />
+@ViewData.ModelMetadata.DisplayFormatString
+    <br />
+@ViewData.ModelMetadata.ContainerType.ToString()

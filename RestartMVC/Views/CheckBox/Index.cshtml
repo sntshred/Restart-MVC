@@ -1,0 +1,14 @@
+﻿@model IEnumerable<RestartMVC.Models.tblCity>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.EditorForModel()
+        <br />
+        <input type="submit" value="submit" />
+    }
+</div>

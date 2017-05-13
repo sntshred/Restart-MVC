@@ -1,0 +1,62 @@
+﻿@model IEnumerable<layout.Models.tblEmployee>
+
+@{
+    ViewBag.Title = null;
+    Layout = null;
+}
+
+<h2>Index</h2>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#CheckAll").click(function () {
+            $("input[name='EmployeesstoDelete']").attr("checked", this.checked);
+
+        });
+
+        $("input[name='EmployeesstoDelete']").click(function () {
+
+                if ($("input[name='EmployeesstoDelete']").length == $("input[name='EmployeesstoDelete']:checked").length) {
+                    $("#CheckAll").attr("checked", "checked");
+
+                }
+                else {
+
+                    $("#CheckAll").removeAttr("checked");
+                }
+
+
+        });
+
+        $("#btnSubmit").click(function () {
+            var count = $("input[name='EmployeesstoDelete']:checked").length;
+            if (count == 0) {
+                alert("No rows are selected to delete");
+                return false;
+            }
+            else {
+                return confirm(count + "Row will be deleted");
+            }
+        })
+    });
+</script>
+@using (Html.BeginForm("Delete", "MultipileDelete", FormMethod.Post))
+{
+    <table border="1">
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="CheckAll" /></th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Deptname</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @Html.EditorForModel()
+        </tbody>
+    </table>
+    <input id="btnSubmit" type="submit" value="submit" />
+
+}
